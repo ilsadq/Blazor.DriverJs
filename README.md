@@ -12,7 +12,7 @@ The `DriverStore` component is used here to store references to Popovers and to 
 
 To be able to work with `DriverStore` we must declare a reference variable to interact with the api.
 
-```razor-cshtml
+```html
 <button @onclick="async () => await _store.StartDrive()">
     Start drive
 </button>
@@ -44,7 +44,9 @@ To be able to work with `DriverStore` we must declare a reference variable to in
 
 ## Highlight
 
-```razor-cshtml
+To highlight a single object, we can use the `DriverJs` service and call the `Highlight` method by passing it a `HighlightModel`
+
+```html
 <button @onclick="ClickHandler" @ref="_ref">
     Click me
 </button>
@@ -63,3 +65,7 @@ To be able to work with `DriverStore` we must declare a reference variable to in
 
 }
 ```
+
+# Preview
+
+![record](./media/video.gif)
