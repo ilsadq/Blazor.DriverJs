@@ -1,0 +1,34 @@
+﻿@page "/test"
+
+<DriverStore @ref="_store">
+    <button @onclick="CLickHandler2">
+        CLick
+    </button>
+
+    <DriverJsPopover Title="HEllo" Description="World">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover Title="World" Description="Hello">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover Title="dfgh" Description="hhh">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+</DriverStore>
+
+@code {
+    
+    private DriverStore _store;
+    
+    private async Task CLickHandler2()
+    {
+        await _store.StartDrive();
+    }
+    
+}

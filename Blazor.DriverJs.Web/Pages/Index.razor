@@ -1,0 +1,114 @@
+﻿@page "/"
+@using Blazor.DriverJs.Models
+@using Blazor.DriverJs.Enums
+
+<button @ref="_ref" @onclick="ClickHandler">
+    CLick
+</button>
+
+<DriverStore @ref="_store" OnNextStep="NextStepHandler">
+    <button @onclick="CLickHandler2">
+        CLick
+    </button>
+
+    <DriverJsPopover Step="0" Title="HEllo" Description="World">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover Step="2" Title="World" Description="Hello">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover Step="1" Title="dfgh" Description="hhh">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+</DriverStore>
+
+<DriverStore @ref="_store2">
+    <button @onclick="CLickHandler3">
+        CLick
+    </button>
+
+    <DriverJsPopover
+        Step="1"
+        Title="Привет"
+        Description="Привет меня зовут Илья"
+        Side="DriverSide.Bottom"
+        DisableNextButton
+        DisableCloseButton
+        DisablePreviousButton
+        Class="test"
+        PopoverClass="test"
+        ShowProgress
+        ShowCloseButton
+        ShowNextButton
+        ShowPreviousButton
+        Align="DriverAlign.End">
+        <div style="width: 100px; height: 100px; background-color: blue; margin-left: 500px;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover
+        Step="3"
+        Title="World"
+        Description="Hello"
+        ShowCloseButton="false"
+        ShowNextButton="false"
+        ShowPreviousButton="false">
+        <div style="width: 100px; height: 100px; background-color: blue; margin-left: 300px">
+            Hello World
+        </div>
+    </DriverJsPopover>
+    <DriverJsPopover
+        Step="2"
+        Title="dfgh"
+        Description="hhh">
+        <div style="width: 100px; height: 100px; background-color: blue;">
+            Hello World
+        </div>
+    </DriverJsPopover>
+</DriverStore>
+
+@code {
+
+    private DriverStore _store;
+    private DriverStore _store2;
+
+    private ElementReference _ref;
+
+    [Inject] public DriverJs DriverJs { get; set; }
+
+    private Task ClickHandler()
+    {
+        return DriverJs.Highlight(new PopoverModel
+        {
+            Element = _ref,
+            Description = "Hello World",
+            Title = "Test",
+        });
+    }
+
+    private async Task CLickHandler2()
+    {
+        await _store.StartDrive();
+    }
+
+    private async Task CLickHandler3()
+    {
+        await _store2.StartDrive();
+    }
+
+    private async Task NextStepHandler(int index)
+    {
+        Console.WriteLine($"Next step handler {index}");
+        if (_store.Popovers.ContainsKey(index))
+        {
+            Console.WriteLine("ASD");
+        }
+    }
+
+}

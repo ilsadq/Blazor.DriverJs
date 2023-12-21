@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.DriverJs.Web", "Blazor.DriverJs.Web\Blazor.DriverJs.Web.csproj", "{0437BEFC-36CA-484D-9064-E9B3E0DAA7ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.DriverJs", "Blazor.DriverJs\Blazor.DriverJs.csproj", "{F3FAD1D6-7D12-4E24-A229-DEDA408AFA04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0437BEFC-36CA-484D-9064-E9B3E0DAA7ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0437BEFC-36CA-484D-9064-E9B3E0DAA7ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0437BEFC-36CA-484D-9064-E9B3E0DAA7ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0437BEFC-36CA-484D-9064-E9B3E0DAA7ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3FAD1D6-7D12-4E24-A229-DEDA408AFA04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3FAD1D6-7D12-4E24-A229-DEDA408AFA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3FAD1D6-7D12-4E24-A229-DEDA408AFA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3FAD1D6-7D12-4E24-A229-DEDA408AFA04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
