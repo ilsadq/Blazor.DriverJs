@@ -6,11 +6,11 @@ C# wrapper for [driverjs](https://driverjs.com/) library
 
 ## Default drive
 
-The `DriverStore` component is used here to store references to Popovers and to run drive.
+The `DriverStore` component is used here to store references to Popovers and to run the drive.
 
 `DriverJsPopover` is a component that represents a popover in which we specify the step in which it will be called by passing parameters such as title, description, ...
 
-To be able to work with `DriverStore` we must declare a reference variable to interact with the api.
+To be able to work with `DriverStore` we must declare a reference variable to interact with the API.
 
 ```html
 <button @onclick="async () => await _store.StartDrive()">
@@ -42,7 +42,7 @@ To be able to work with `DriverStore` we must declare a reference variable to in
 
 ## Highlight
 
-To highlight a single object, we can use the `DriverJs` service and call the `Highlight` method by passing it a `HighlightModel`
+To highlight a single object, we can use the `DriverJs` service and call the Highlight method by passing it a `HighlightModel`.
 
 ```html
 <button @onclick="ClickHandler" @ref="_ref">
