@@ -2,6 +2,19 @@
 
 C# wrapper for [driverjs](https://driverjs.com/) library
 
+# Instalation
+
+Add to head
+
+```html
+<link rel="stylesheet" href="_content/Blazor.DriverJs/driverjs.css">
+```
+
+Add to body
+```html
+<script src="_content/Blazor.DriverJs/driverjs.js"></script>
+```
+
 # Examples
 
 ## Default drive
