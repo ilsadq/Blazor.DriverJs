@@ -20,7 +20,7 @@ public class DriverJs : IDisposable
         await module.InvokeVoidAsync("startDrive", model, dotObj);
     }
 
-    public async Task Highlight(PopoverModel model)
+    public async Task Highlight(HighlightModel model)
     {
         var module = await _jsModule.Value;
         await module.InvokeVoidAsync("highlight", model);

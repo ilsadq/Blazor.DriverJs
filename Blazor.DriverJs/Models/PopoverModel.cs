@@ -21,12 +21,12 @@ public class PopoverModel
     /// <summary>
     /// values: top, right, bottom, left
     /// </summary>
-    public string Side { get; set; } = "left";
+    public string Side { get; set; } = DriverJsDefaultValues.DefaultSide;
 
     /// <summary>
     /// values: start, center, end
     /// </summary>
-    public string Align { get; set; } = "start";
+    public string Align { get; set; } = DriverJsDefaultValues.DefaultAlign;
 
     /// <summary>
     /// values: next, previous, close

@@ -8,13 +8,8 @@ export function highlight(model) {
         popover: {
             title: model.title,
             description: model.description,
-
             side: model.side,
             align: model.align,
-
-            showProgress: model.showProgress ?? false,
-
-            progressText: model.progressText,
             popoverClass: model.popoverClass,
         }
     })

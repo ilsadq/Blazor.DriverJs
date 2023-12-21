@@ -1,114 +1,44 @@
 ﻿@page "/"
 @using Blazor.DriverJs.Models
-@using Blazor.DriverJs.Enums
 
-<button @ref="_ref" @onclick="ClickHandler">
-    CLick
+<button @onclick="async () => await _store.StartDrive()">
+    Start drive
 </button>
 
-<DriverStore @ref="_store" OnNextStep="NextStepHandler">
-    <button @onclick="CLickHandler2">
-        CLick
-    </button>
+<div class="gallery__wrapper">
+    <DriverStore @ref="_store">
+        <DriverJsPopover Step="1" Title="It's a fish with a nice hat">
+            <img src="https://i.pinimg.com/564x/d5/ba/a9/d5baa9d87ceccbcbb8c679b53dc07293.jpg" alt="">
+        </DriverJsPopover>
 
-    <DriverJsPopover Step="0" Title="HEllo" Description="World">
-        <div style="width: 100px; height: 100px; background-color: blue;">
-            Hello World
-        </div>
-    </DriverJsPopover>
-    <DriverJsPopover Step="2" Title="World" Description="Hello">
-        <div style="width: 100px; height: 100px; background-color: blue;">
-            Hello World
-        </div>
-    </DriverJsPopover>
-    <DriverJsPopover Step="1" Title="dfgh" Description="hhh">
-        <div style="width: 100px; height: 100px; background-color: blue;">
-            Hello World
-        </div>
-    </DriverJsPopover>
-</DriverStore>
+        <DriverJsPopover Step="2" Title="It's a smiley face." Description="He's very happy...">
+            <img src="https://i.pinimg.com/564x/29/70/52/2970520b7069945d60d4d3482691f9d7.jpg" alt="">
+        </DriverJsPopover>
 
-<DriverStore @ref="_store2">
-    <button @onclick="CLickHandler3">
-        CLick
-    </button>
+        <DriverJsPopover Step="3" Title="And that's a cool smiley face">
+            <img src="https://i.pinimg.com/736x/40/bb/da/40bbdac7db3945f95eb9cfe572d36ecd.jpg" alt="">
+        </DriverJsPopover>
+    </DriverStore>
+</div>
 
-    <DriverJsPopover
-        Step="1"
-        Title="Привет"
-        Description="Привет меня зовут Илья"
-        Side="DriverSide.Bottom"
-        DisableNextButton
-        DisableCloseButton
-        DisablePreviousButton
-        Class="test"
-        PopoverClass="test"
-        ShowProgress
-        ShowCloseButton
-        ShowNextButton
-        ShowPreviousButton
-        Align="DriverAlign.End">
-        <div style="width: 100px; height: 100px; background-color: blue; margin-left: 500px;">
-            Hello World
-        </div>
-    </DriverJsPopover>
-    <DriverJsPopover
-        Step="3"
-        Title="World"
-        Description="Hello"
-        ShowCloseButton="false"
-        ShowNextButton="false"
-        ShowPreviousButton="false">
-        <div style="width: 100px; height: 100px; background-color: blue; margin-left: 300px">
-            Hello World
-        </div>
-    </DriverJsPopover>
-    <DriverJsPopover
-        Step="2"
-        Title="dfgh"
-        Description="hhh">
-        <div style="width: 100px; height: 100px; background-color: blue;">
-            Hello World
-        </div>
-    </DriverJsPopover>
-</DriverStore>
+<button @onclick="ClickHandler" @ref="_ref">
+    Click me
+</button>
 
 @code {
 
     private DriverStore _store;
-    private DriverStore _store2;
 
     private ElementReference _ref;
 
     [Inject] public DriverJs DriverJs { get; set; }
 
-    private Task ClickHandler()
+    private async Task ClickHandler()
     {
-        return DriverJs.Highlight(new PopoverModel
+        await DriverJs.Highlight(new HighlightModel(_ref)
         {
-            Element = _ref,
-            Description = "Hello World",
-            Title = "Test",
+            Title = "Hello World",
         });
     }
-
-    private async Task CLickHandler2()
-    {
-        await _store.StartDrive();
-    }
-
-    private async Task CLickHandler3()
-    {
-        await _store2.StartDrive();
-    }
-
-    private async Task NextStepHandler(int index)
-    {
-        Console.WriteLine($"Next step handler {index}");
-        if (_store.Popovers.ContainsKey(index))
-        {
-            Console.WriteLine("ASD");
-        }
-    }
-
+    
 }
