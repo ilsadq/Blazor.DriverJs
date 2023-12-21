@@ -10,7 +10,7 @@
         <RepositoryUrl>https://github.com/ilsadq/Blazor.DriverJs</RepositoryUrl>
         <PackageTags>Blazor, DriverJs</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageIcon>driverjs.svg</PackageIcon>
+        <PackageIcon>driverjs.png</PackageIcon>
     </PropertyGroup>
 
 
@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="driverjs.svg">
+      <None Update="driverjs.png">
         <Pack>True</Pack>
         <PackagePath></PackagePath>
       </None>
