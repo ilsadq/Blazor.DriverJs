@@ -37,8 +37,6 @@ To be able to work with `DriverStore` we must declare a reference variable to in
 
   private DriverStore _store;
 
-  [Inject] public DriverJs DriverJs { get; set; }
-
 }
 ```
 
