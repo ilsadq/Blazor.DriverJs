@@ -4,6 +4,13 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <Title>Blazor DriverJs</Title>
+        <Description>Wrapper for driverjs lib</Description>
+        <PackageProjectUrl>https://github.com/ilsadq/Blazor.DriverJs</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/ilsadq/Blazor.DriverJs</RepositoryUrl>
+        <PackageTags>Blazor, DriverJs</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>driverjs.svg</PackageIcon>
     </PropertyGroup>
 
 
@@ -13,6 +20,13 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.13"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="driverjs.svg">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 
 </Project>

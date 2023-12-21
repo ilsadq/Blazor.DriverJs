@@ -4,6 +4,8 @@ C# wrapper for [driverjs](https://driverjs.com/) library
 
 # Instalation
 
+`dotnet add package Blazor.DriverJs`
+
 Add to head
 
 ```html
