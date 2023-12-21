@@ -2,7 +2,9 @@
 
 C# wrapper for [driverjs](https://driverjs.com/) library
 
-## Examples
+# Examples
+
+## Default drive
 
 The `DriverStore` component is used here to store references to Popovers and to run drive.
 
@@ -10,7 +12,7 @@ The `DriverStore` component is used here to store references to Popovers and to 
 
 To be able to work with `DriverStore` we must declare a reference variable to interact with the api.
 
-```html
+```razor-cshtml
 <button @onclick="async () => await _store.StartDrive()">
     Start drive
 </button>
@@ -36,6 +38,28 @@ To be able to work with `DriverStore` we must declare a reference variable to in
   private DriverStore _store;
 
   [Inject] public DriverJs DriverJs { get; set; }
+
+}
+```
+
+## Highlight
+
+```razor-cshtml
+<button @onclick="ClickHandler" @ref="_ref">
+    Click me
+</button>
+
+@code {
+
+  private ElementReference _ref;
+
+  private async Task ClickHandler()
+  {
+      await DriverJs.Highlight(new HighlightModel(_ref)
+      {
+          Title = "Hello World",
+      });
+  }
 
 }
 ```
