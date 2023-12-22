@@ -2,7 +2,7 @@
 
 C# wrapper for [driverjs](https://driverjs.com/) library
 
-# Instalation
+# Installation
 
 `dotnet add package Blazor.DriverJs`
 
