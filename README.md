@@ -4,7 +4,9 @@ C# wrapper for [driverjs](https://driverjs.com/) library
 
 # Instalation
 
-`dotnet add package Blazor.DriverJs`
+```ps
+dotnet add package Blazor.DriverJs
+```
 
 Add to head
 
@@ -75,6 +77,27 @@ To highlight a single object, we can use the `DriverJs` service and call the Hig
           Title = "Hello World",
       });
   }
+
+}
+```
+
+## Get current step
+
+To get the step number, subscribe to the `OnNextStep` event, which returns the step number.
+
+To retrieve the Popover model, utilize the `DriverStore` reference object, which includes the `Popovers` parameter.
+
+```html
+<DriverStore @ref="_store" OnNextStep="NextStepHandler"></DriverStore>
+
+@code {
+
+    private DriverStore _store;
+
+    private async Task NextStepHandler(int index)
+    {
+        var currentPopover = _store.Popovers[index];
+    }
 
 }
 ```

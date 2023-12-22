@@ -11,8 +11,9 @@
         <PackageTags>Blazor, DriverJs</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>driverjs.png</PackageIcon>
+        <Authors>adequate</Authors>
+        <Version>1.0.1</Version>
     </PropertyGroup>
-
 
     <ItemGroup>
         <SupportedPlatform Include="browser"/>

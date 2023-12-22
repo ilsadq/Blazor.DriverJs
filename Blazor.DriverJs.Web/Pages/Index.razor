@@ -25,6 +25,8 @@
     Click me
 </button>
 
+<DriverStore OnNextStep="NextStepHandler"></DriverStore>
+
 @code {
 
     private DriverStore _store;
@@ -39,6 +41,11 @@
         {
             Title = "Hello World",
         });
+    }
+
+    private async Task NextStepHandler(int index)
+    {
+        var currentPopover = _store.Popovers[index];
     }
     
 }
