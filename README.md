@@ -18,7 +18,10 @@ Add to body
 ```html
 <script src="_content/Blazor.DriverJs/driverjs.js"></script>
 ```
-
+Register service to DI
+```c
+builder.Services.AddScoped<DriverJs>();
+```
 # Examples
 
 ## Default drive
