@@ -27,6 +27,8 @@ The `DriverStore` component is used here to store references to Popovers and to 
 
 `DriverJsPopover` is a component that represents a popover in which we specify the step in which it will be called by passing parameters such as title, description, ...
 
+`DriverJsPopoverId` analogous to DriverJsPopover, but in this place there is a link to the element id.
+
 To be able to work with `DriverStore` we must declare a reference variable to interact with the API.
 
 ```html
@@ -47,6 +49,11 @@ To be able to work with `DriverStore` we must declare a reference variable to in
         <DriverJsPopover Step="3" Title="And that's a cool smiley face">
             <img src="https://i.pinimg.com/736x/40/bb/da/40bbdac7db3945f95eb9cfe572d36ecd.jpg" alt="">
         </DriverJsPopover>
+
+        <DriverJsPopoverId Step="4" Title="Hello World">
+            <img src="https://i.pinimg.com/736x/40/bb/da/40bbdac7db3945f95eb9cfe572d36ecd.jpg" alt=""
+                 id="@context">
+        </DriverJsPopoverId>
     </DriverStore>
 </div>
 
@@ -66,6 +73,10 @@ To highlight a single object, we can use the `DriverJs` service and call the Hig
     Click me
 </button>
 
+<button @onclick="ClickHandler2" id="super-button">
+    Click me
+</button>
+
 @code {
 
   private ElementReference _ref;
@@ -73,6 +84,14 @@ To highlight a single object, we can use the `DriverJs` service and call the Hig
   private async Task ClickHandler()
   {
       await DriverJs.Highlight(new HighlightModel(_ref)
+      {
+          Title = "Hello World",
+      });
+  }
+
+  private async Task ClickHandler2()
+  {
+      await DriverJs.Highlight(new HighlightModel("super-button")
       {
           Title = "Hello World",
       });
