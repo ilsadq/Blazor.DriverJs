@@ -4,8 +4,8 @@ namespace Blazor.DriverJs.Models;
 
 public class HighlightModel
 {
-    public ElementReference Element { get; set; }
-    
+    public object Element { get; set; }
+
     /// <summary>
     /// Title show in the popover.
     /// You can use HTML in these. Also, you can omit one of these to show only the other.
@@ -22,7 +22,7 @@ public class HighlightModel
     /// values: top, right, bottom, left
     /// </summary>
     public string Side { get; set; } = DriverJsDefaultValues.DefaultSide;
-    
+
     /// <summary>
     /// values: start, center, end
     /// </summary>
@@ -31,5 +31,10 @@ public class HighlightModel
     public HighlightModel(ElementReference reference)
     {
         Element = reference;
+    }
+
+    public HighlightModel(string elementId)
+    {
+        Element = "#" + elementId;
     }
 }

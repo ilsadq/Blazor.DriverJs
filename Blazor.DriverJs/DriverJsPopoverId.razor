@@ -20,6 +20,9 @@
     
     protected override async Task OnInitializedAsync()
     {
+        Model.Element = "#" + PopoverId;
+        Store.AddPopover(Step, Model);
+        
         OnDisableButtonUpdate += UpdateDisableButtons;
         OnShowButtonUpdate += UpdateShowButtons;
 

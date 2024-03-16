@@ -32,6 +32,10 @@
 
 <DriverStore OnNextStep="NextStepHandler"></DriverStore>
 
+<button @onclick="ClickHandler2" id="helloworld">
+    World Hello
+</button>
+
 @code {
 
     private DriverStore _store;
@@ -45,6 +49,14 @@
         await DriverJs.Highlight(new HighlightModel(_ref)
         {
             Title = "Hello World",
+        });
+    }
+
+    private async Task ClickHandler2()
+    {
+        await DriverJs.Highlight(new HighlightModel("helloworld")
+        {
+            Title = "World Hello"
         });
     }
 

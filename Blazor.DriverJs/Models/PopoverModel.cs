@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace Blazor.DriverJs.Models;
+﻿namespace Blazor.DriverJs.Models;
 
 public class PopoverModel
 {
-    public ElementReference Element { get; set; }
+    public object Element { get; set; }
 
     /// <summary>
     /// Title show in the popover.
