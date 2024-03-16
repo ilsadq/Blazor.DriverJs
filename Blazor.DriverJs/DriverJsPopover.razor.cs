@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Blazor.DriverJs;
 
-public partial class DriverJsPopover : IDisposable
+public partial class DriverJsPopover : IAsyncDisposable
 {
     private ElementReference Ref
     {
@@ -17,7 +17,14 @@ public partial class DriverJsPopover : IDisposable
 
     [CascadingParameter] public DriverStore Store { get; set; }
 
-    private void UpdateShowButtons()
+    protected override void OnInitialized()
+    {
+        OnDisableButtonUpdate += UpdateDisableButtons;
+        OnShowButtonUpdate += UpdateShowButtons;
+        base.OnInitialized();
+    }
+
+    private void UpdateShowButtons(object? sender, EventArgs args)
     {
         var buttons = new List<string>();
 
@@ -28,7 +35,7 @@ public partial class DriverJsPopover : IDisposable
         Model.ShowButtons = buttons.Count > 0 ? buttons.ToArray() : null;
     }
 
-    private void UpdateDisableButtons()
+    private void UpdateDisableButtons(object? sender, EventArgs args)
     {
         var buttons = new List<string>();
 
@@ -39,8 +46,11 @@ public partial class DriverJsPopover : IDisposable
         Model.DisableButtons = buttons.Count > 0 ? buttons.ToArray() : null;
     }
 
-    public void Dispose()
+    public ValueTask DisposeAsync()
     {
+        OnDisableButtonUpdate -= UpdateDisableButtons;
+        OnShowButtonUpdate -= UpdateShowButtons;
         Store.RemovePopover(Step);
+        return ValueTask.CompletedTask;
     }
 }
