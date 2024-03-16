@@ -18,6 +18,11 @@
         <DriverJsPopover Step="3" Title="And that's a cool smiley face">
             <img src="https://i.pinimg.com/736x/40/bb/da/40bbdac7db3945f95eb9cfe572d36ecd.jpg" alt="">
         </DriverJsPopover>
+
+        <DriverJsPopoverId Step="4" Title="Hello World">
+            <img src="https://i.pinimg.com/736x/40/bb/da/40bbdac7db3945f95eb9cfe572d36ecd.jpg" alt=""
+                 id="@context">
+        </DriverJsPopoverId>
     </DriverStore>
 </div>
 
@@ -26,6 +31,10 @@
 </button>
 
 <DriverStore OnNextStep="NextStepHandler"></DriverStore>
+
+<button @onclick="ClickHandler2" id="helloworld">
+    World Hello
+</button>
 
 @code {
 
@@ -43,9 +52,17 @@
         });
     }
 
+    private async Task ClickHandler2()
+    {
+        await DriverJs.Highlight(new HighlightModel("helloworld")
+        {
+            Title = "World Hello"
+        });
+    }
+
     private async Task NextStepHandler(int index)
     {
         var currentPopover = _store.Popovers[index];
     }
-    
+
 }

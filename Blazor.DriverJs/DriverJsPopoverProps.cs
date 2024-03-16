@@ -5,16 +5,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace Blazor.DriverJs;
 
-public partial class DriverJsPopover
+public abstract class DriverJsPopoverProps : ComponentBase
 {
+    protected EventHandler? OnDisableButtonUpdate;
+    protected EventHandler? OnShowButtonUpdate;
+    
     #region Props
-
-    [Parameter] public RenderFragment? ChildContent { get; set; }
-
+    
     [Parameter] public PopoverModel Model { get; set; } = new();
-
-    [Parameter, EditorRequired] public int Step { get; set; }
-
+    
     [Parameter]
     public string? Class
     {
@@ -111,7 +110,7 @@ public partial class DriverJsPopover
         set
         {
             _disableCloseButton = value;
-            UpdateDisableButtons();
+            OnDisableButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -128,7 +127,7 @@ public partial class DriverJsPopover
         set
         {
             _disableNextButton = value;
-            UpdateDisableButtons();
+            OnDisableButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -145,7 +144,7 @@ public partial class DriverJsPopover
         set
         {
             _disablePreviousButton = value;
-            UpdateDisableButtons();
+            OnDisableButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -165,7 +164,7 @@ public partial class DriverJsPopover
         set
         {
             _showCloseButtons = value;
-            UpdateShowButtons();
+            OnShowButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -181,7 +180,7 @@ public partial class DriverJsPopover
         set
         {
             _showNextButton = value;
-            UpdateShowButtons();
+            OnShowButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -197,7 +196,7 @@ public partial class DriverJsPopover
         set
         {
             _showPreviousButton = value;
-            UpdateShowButtons();
+            OnShowButtonUpdate?.Invoke(this, EventArgs.Empty);
         }
     }
 

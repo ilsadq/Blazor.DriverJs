@@ -1,35 +1,32 @@
-﻿@inherits DriverJsPopoverProps
+@inherits DriverJsPopoverProps
+@using Microsoft.JSInterop
 @implements IAsyncDisposable
 
-<span @ref="Ref" class="@Class">@ChildContent</span>
+@ChildContent(PopoverId)
 
 @code {
 
-    private ElementReference Ref
-    {
-        set
-        {
-            Model.Element = value;
-            Store.AddPopover(Step, Model);
-        }
-    }
+    private string PopoverId => $"popover-{GetHashCode()}";
 
-    #region Props
-
-    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public RenderFragment<string> ChildContent { get; set; }
 
     [Parameter, EditorRequired] public int Step { get; set; }
-    
-    #endregion
-    
+
     [CascadingParameter] public DriverStore Store { get; set; }
 
-    protected override void OnInitialized()
+    [Inject] public IJSRuntime Js { get; set; }
+    
+    [Inject] public DriverJs DriverJs { get; set; }
+    
+    protected override async Task OnInitializedAsync()
     {
+        Model.Element = "#" + PopoverId;
+        Store.AddPopover(Step, Model);
+        
         OnDisableButtonUpdate += UpdateDisableButtons;
         OnShowButtonUpdate += UpdateShowButtons;
-        
-        base.OnInitialized();
+
+        await base.OnInitializedAsync();
     }
 
     private void UpdateShowButtons(object? sender, EventArgs args)
@@ -58,9 +55,7 @@
     {
         OnDisableButtonUpdate -= UpdateDisableButtons;
         OnShowButtonUpdate -= UpdateShowButtons;
-        
         Store.RemovePopover(Step);
-        
         return ValueTask.CompletedTask;
     }
 
