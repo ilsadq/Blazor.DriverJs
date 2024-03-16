@@ -1,27 +1,29 @@
-﻿using Blazor.DriverJs.Enums;
-using Blazor.DriverJs.Models;
-using Microsoft.AspNetCore.Components;
+@inherits DriverJsPopoverProps
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
 
-namespace Blazor.DriverJs;
+@ChildContent(PopoverId)
 
-public partial class DriverJsPopover : IAsyncDisposable
-{
-    private ElementReference Ref
-    {
-        set
-        {
-            Model.Element = value;
-            Store.AddPopover(Step, Model);
-        }
-    }
+@code {
+
+    private string PopoverId => $"popover-{GetHashCode()}";
+
+    [Parameter] public RenderFragment<string> ChildContent { get; set; }
+
+    [Parameter, EditorRequired] public int Step { get; set; }
 
     [CascadingParameter] public DriverStore Store { get; set; }
 
-    protected override void OnInitialized()
+    [Inject] public IJSRuntime Js { get; set; }
+    
+    [Inject] public DriverJs DriverJs { get; set; }
+    
+    protected override async Task OnInitializedAsync()
     {
         OnDisableButtonUpdate += UpdateDisableButtons;
         OnShowButtonUpdate += UpdateShowButtons;
-        base.OnInitialized();
+
+        await base.OnInitializedAsync();
     }
 
     private void UpdateShowButtons(object? sender, EventArgs args)
@@ -53,4 +55,5 @@ public partial class DriverJsPopover : IAsyncDisposable
         Store.RemovePopover(Step);
         return ValueTask.CompletedTask;
     }
+
 }
