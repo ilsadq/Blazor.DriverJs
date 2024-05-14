@@ -20,7 +20,7 @@ Add to body
 ```
 Register service to DI
 ```c
-builder.Services.AddScoped<DriverJs>();
+builder.Services.RegisterDriverJs();
 ```
 # Examples
 

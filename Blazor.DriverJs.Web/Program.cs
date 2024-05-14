@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<DriverJs>();
+builder.Services.RegisterDriverJs();
 
 var app = builder.Build();
 

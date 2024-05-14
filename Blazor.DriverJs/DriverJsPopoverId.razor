@@ -16,7 +16,7 @@
 
     [Inject] public IJSRuntime Js { get; set; }
     
-    [Inject] public DriverJs DriverJs { get; set; }
+    [Inject] public IDriverJs DriverJs { get; set; }
     
     protected override async Task OnInitializedAsync()
     {
